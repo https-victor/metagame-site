@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "nodemon app.js",
+    "dev": "nodemon -r dotenv/config app.js",
+    "prod": "NODE_ENV=production nodemon app.js "
   },
   "author": "Aboleth",
   "license": "MIT",
@@ -17,6 +18,8 @@
     "sequelize": "^6.3.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^6.2.0"
   }
 }

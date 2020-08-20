@@ -1,17 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../config/database");
-const User = require("../models/User");
+const UserController = require("../controllers/UserController");
+const CampaignController = require("../controllers/CampaignController");
 
+// Users
 // Get users list
-router.get("/", (req, res) =>
-  User.findAll()
-    .then((users) => {
-      res.json(users);
-    })
-    .catch((err) => console.log(err))
-);
+router.get("/", UserController.getAll);
 
-// Add a user
+// Create new user
+router.post("/", UserController.create);
+
+//  Contained by User
+// Get all campaigns owned by user
+router.get("/:userId/campaigns", CampaignController.getAllById);
+// Add a new campaign on given user
+router.post("/:userId/campaigns", CampaignController.create);
 
 module.exports = router;

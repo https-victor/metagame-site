@@ -1,14 +1,19 @@
-const Sequelize = require("sequelize");
+const keys = require("../keys");
 
-module.exports = new Sequelize("ttsrpg", "aboleth", "qsezwcaxd759183426", {
-  host: "107.180.2.86",
+module.exports = {
   dialect: "mysql",
+  host: keys.HOST,
+  username: keys.USER,
+  password: keys.PWD,
+  database: keys.DB,
   operatorsAliases: 1,
-
+  define: {
+    timestamps: true,
+  },
   pool: {
     max: 5,
     min: 0,
     acquire: 30000,
     idle: 10000,
   },
-});
+};

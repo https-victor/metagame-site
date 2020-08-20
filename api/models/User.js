@@ -1,16 +1,19 @@
-const Sequelize = require("sequelize");
-const db = require("../config/database");
+const { DataTypes } = require("sequelize");
+const database = require("../database/index");
+const Campaign = require("./Campaign");
 
-const User = db.define("user", {
+const User = database.define("user", {
   name: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
   },
   email: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
   },
   password: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
   },
 });
+
+User.hasMany(Campaign, { foreignKey: "gmId", as: "campaigns" });
 
 module.exports = User;
