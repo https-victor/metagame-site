@@ -1,13 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../config/database");
-const Campaign = require("../models/Campaign");
 const CampaignController = require("../controllers/CampaignController");
 
 // Get campaigns list
-router.get("/", CampaignController.getAll);
+router.get("/", CampaignController.getAllCampaigns);
 
-// // Create new user
-// router.post("/", CampaignController.create);
+// Get campaigns by id
+router.get("/:campaignId", CampaignController.getCampaignById);
 
 module.exports = router;

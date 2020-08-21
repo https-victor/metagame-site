@@ -1,6 +1,5 @@
 const { DataTypes } = require("sequelize");
 const database = require("../database/index");
-const Campaign = require("./Campaign");
 
 const User = database.define("user", {
   name: {
@@ -13,7 +12,5 @@ const User = database.define("user", {
     type: DataTypes.STRING,
   },
 });
-
-User.hasMany(Campaign, { foreignKey: "gmId", as: "campaigns" });
 
 module.exports = User;
